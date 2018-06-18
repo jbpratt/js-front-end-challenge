@@ -17,6 +17,7 @@ export class AppComponent {
     this.loading = true;
     this.movieService.search(this.keyword).subscribe((result: any) => {
       this.results = result.results;
+      this.loading = false;
     });
   }
 }

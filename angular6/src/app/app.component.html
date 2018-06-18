@@ -6,5 +6,5 @@
 </form>
 <img *ngIf="loading" src="https://i.imgur.com/LVHmLnb.gif" alt="Loading..." />
 <section class="results">
-  <img *ngFor="let result in results">
+  <img *ngFor="let result of results" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{result.poster_path}}">
 </section>
