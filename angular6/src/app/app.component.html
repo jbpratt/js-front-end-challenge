@@ -4,3 +4,7 @@
   <input [(ngModel)]="keyword" class="u-full-width" type="text" id="keyword" name="keyword">
   <button type="submit">search</button>
 </form>
+<img *ngIf="loading" src="https://i.imgur.com/LVHmLnb.gif" alt="Loading..." />
+<section class="results">
+  <img *ngFor="let result in results">
+</section>
