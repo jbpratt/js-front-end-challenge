@@ -29,7 +29,7 @@ function search(keyword) {
 
 function displayResults(results) {
   results.forEach(result => {
-    const resultElement = document.createElement("img");
+    const resultElement = document.createElement("img");r
     resultElement.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${
       result.poster_path
     }`;
