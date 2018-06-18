@@ -14,6 +14,7 @@ export class AppComponent {
   loading = false;
 
   onSubmit() {
+    this.results = [];
     this.loading = true;
     this.movieService.search(this.keyword).subscribe((result: any) => {
       this.results = result.results;
