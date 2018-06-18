@@ -11,6 +11,7 @@ loadingImage.style.display = "none";
 function formSubmitted(e) {
   e.preventDefault();
   const keyword = input.value;
+  resultSection.innerHTML = "";
 
   search(keyword).then(displayResults);
 }
