@@ -1,19 +1,35 @@
 const form = document.querySelector('form');
 const input = document.querySelector('input');
+const resultSection = document.querySelector('.results')
 form.addEventListener('submit', formSubmitted);
 const key = 'd9d1b9fa937ccba01b56d208be6f3753'; // \\ 
+const loadingImage = document.querySelector('#loadingImage');
+
+loadingImage.style.display = 'none';
 
 function formSubmitted(e) {
   e.preventDefault();
   const keyword = input.value;
-  console.log(keyword);
-  search(keyword);
+
+
+  search(keyword)
+    .then(displayResults);
 }
 
 function search(keyword) {
-  let url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${keyword}`
+  let url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${keyword}`;
+  loadingImage.style.display = '';
+  // returns promise
+  return fetch(url).then(res => res.json()).then(res => {
+    return res.results
+  });
+}
 
-  fetch(url).then(res => res.json()).then(res => console.log(res));
-
-  console.log(url);
+function displayResults(results) {
+  results.forEach(result => {
+    console.log(result)
+    const resultElement = document.createElement('img');
+    resultElement.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${result.poster_path}`;
+    resultSection.appendChild(resultElement);
+  })
 }
